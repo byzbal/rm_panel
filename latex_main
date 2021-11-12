@@ -1,0 +1,78 @@
+\documentclass [11pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage[toc, title, page]{appendix}
+\usepackage{enumitem}   
+\usepackage{microtype}
+\usepackage{amsfonts}
+\usepackage{color}
+\usepackage{pdfpages}
+\usepackage{amssymb}
+
+% Code below is for Autoref to display "Equation (1)"
+%___________________________________________________
+\def\chapterautorefname~#1\null{Chap.~(#1)\null}
+\def\sectionautorefname~#1\null{Sec.~(#1)\null}
+\def\subsectionautorefname~#1\null{sub--Sec.~(#1)\null}
+\def\figureautorefname~#1\null{Fig.~(#1)\null}
+\def\tableautorefname~#1\null{Tab.~(#1)\null}
+\def\equationautorefname~#1\null{Eq.~(#1)\null}
+
+\newcommand{\Autoref}[1]{%
+	\begingroup%
+	\def\chapterautorefname~##1\null{Chapter~(##1)\null}%
+	\def\sectionautorefname~##1\null{Section~(##1)\null}%
+	\def\subsectionautorefname~##1\null{Sub--Section~(##1)\null}%
+	\def\figureautorefname~##1\null{Figure~(##1)\null}%
+	\def\tableautorefname~##1\null{Table~(##1)\null}%
+	\def\equationautorefname~##1\null{Equation~(##1)\null}%
+	\autoref{#1}%
+	\endgroup%
+}
+% ___________________________________________________
+\usepackage{upgreek}
+\usepackage[round,sort]{natbib}
+\usepackage{hyperref}
+\setlength{\parindent}{0cm}
+\hypersetup{
+	colorlinks=true,
+	urlcolor = blue,
+	linkcolor = blue,
+	citecolor=blue
+}
+\bibpunct[, ]{(}{)}{;}{a}{,}{,}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\renewcommand{\baselinestretch}{1.3}
+\usepackage[left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry}
+\author{Bashige, Beyza and James}
+
+\title{ \textbf{Beyond Fixed vs Random Effects : A Step towards Interactive Fixed Effects}}
+
+\begin{document}
+		\maketitle
+
+\noindent \textbf{Recap \& Motivation} : The standard regression model and its estimation are threatened by the possibility of omitted-variable bias resulting from the failure to include all possible explanatory variables in the empirical model\footnote{Still, the size of the bias depends on the magnitude of omitted variable effects as well as the strength of the correlation between the measured and unmeasured variables.}. When the omitted variables are constant over time, panel data estimators allow to consistently control unobserved heterogeneity either by random or fixed effects estimators. However, whether to treat the effects as fixed or random is not a straightforward question to answer. As argued by \cite{Hsiao2003}, it may be a source of considerable difference in the estimates of the parameters in presence of finite time dimension and large population. Furthermore, while unobserved heterogeneity can be captured by within-group or between-group estimators, the latter fails to capture unobservable interactive effects. \\
+
+\begin{center}
+    \textbf{Paper Structure}
+\end{center}
+
+\noindent \textbf{Theory} : Our analysis build on static panel models. We will first present the classic FE model by stressing its limitations and features under Least-Squares-Dummy-Variable (LSDV) approach. This will serve as a baseline for introducing the RE model, a common alternative to the fixed effects model commonly implemented using the Generalized Least Squares (GLS). We will essentially refer to \citet{Greene2003, Baltagi2005,Hsiao2003, Patrick2008}. After comparing underlying assumptions of FE and RE models, we will describe the Hausman (1978) misspecification test which drives the choice between FE and RE models. Afterwards, we will draw inspiration from \citet{Bai2009,Bai2014,Moon2015,Su2015, Li2016,Hsiao2018} to highlight advantages of interactive fixed effects models over the aforementioned classic approach. \\
+
+\textbf{Assessment} : At this stage, we will construct a Monte Carlo experiment in R to assess the finite sample properties of the three approaches (FE, RE and Interactive Effects). Ideally, we will explore their performance characteristics under different data conditions. More precisely, we will first compare FE to RE models by examining under what circumstances they are efficient. We will then connect to interactive fixed effects model to compare its properties to classic methods' ones. \\
+
+\textbf{Application to data} : We will finally apply the 3 approaches to data to show their relevance in real life (Depending on availability, we will use micro- or macro- level data). \\
+
+%\newpage
+\bibliographystyle{abbrvnat}
+\bibliography{References}
+\newpage
+\end{document}
